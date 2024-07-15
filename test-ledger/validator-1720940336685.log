@@ -1,0 +1,15 @@
+[0m[38;5;8m[[0m2024-07-14T06:58:56.685716000Z [0m[32mINFO [0m solana_test_validator[0m[38;5;8m][0m solana-validator 1.17.25 (src:d0ed878d; feat:3580551090, client:SolanaLabs)
+[0m[38;5;8m[[0m2024-07-14T06:58:56.685773000Z [0m[32mINFO [0m solana_test_validator[0m[38;5;8m][0m Starting validator with: ArgsOs {
+        inner: [
+            "solana-test-validator",
+        ],
+    }
+[0m[38;5;8m[[0m2024-07-14T06:58:56.685805000Z [0m[33mWARN [0m solana_perf[0m[38;5;8m][0m CUDA is disabled
+[0m[38;5;8m[[0m2024-07-14T06:58:56.691886000Z [0m[32mINFO [0m solana_faucet::faucet[0m[38;5;8m][0m Faucet started. Listening on: 0.0.0.0:9900
+[0m[38;5;8m[[0m2024-07-14T06:58:56.691899000Z [0m[32mINFO [0m solana_faucet::faucet[0m[38;5;8m][0m Faucet account address: N1UQQesiThxg587Tyx1GPdWk8kHkujdBmYSyw5e6YPr
+[0m[38;5;8m[[0m2024-07-14T06:58:56.692230000Z [0m[32mINFO [0m solana_validator::admin_rpc_service[0m[38;5;8m][0m started admin rpc service!
+[0m[38;5;8m[[0m2024-07-14T06:58:56.693151000Z [0m[32mINFO [0m solana_test_validator[0m[38;5;8m][0m Feature for 41tVp5qR1XwWRt5WifvtSQyuxtqQWJgEK8w91AtBqSwP deactivated
+[0m[38;5;8m[[0m2024-07-14T06:58:56.694503000Z [0m[32mINFO [0m solana_ledger::blockstore[0m[38;5;8m][0m Maximum open file descriptors: 1048575
+[0m[38;5;8m[[0m2024-07-14T06:58:56.694516000Z [0m[32mINFO [0m solana_ledger::blockstore[0m[38;5;8m][0m Opening database at "test-ledger/rocksdb"
+[0m[38;5;8m[[0m2024-07-14T06:58:56.694858000Z [0m[33mWARN [0m solana_ledger::blockstore_db[0m[38;5;8m][0m Unable to detect Rocks columns: Error { message: "IO error: No such file or directory: While opening a file for sequentially reading: test-ledger/rocksdb/CURRENT: No such file or directory" }
+[0m[38;5;8m[[0m2024-07-14T06:58:56.791251000Z [0m[32mINFO [0m solana_ledger::blockstore[0m[38;5;8m][0m "test-ledger/rocksdb" open took 96ms
