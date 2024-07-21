@@ -48,81 +48,42 @@ echo "export PATH=$PWD/bin:\$PATH" >> ~/.profile
    ```
 3. X
 
-## 4. コントラクトの記述〜ビルド
+## 4. コントラクトの記述〜ビルド1〜デプロイ
 1. Cargoプロジェクト立ち上げ（初期化）
    ```bash
    cargo init hello_world --lib
    cd hello_world
    ```
-2. Solanaライブラリのインストール ※バージョン指定
+2. ビルド
    ```bash
-   cargo add solana-program@"=1.17.17"
+   anchor build
+   anchor deploy --provider.cluster devnet
    ```
-3. Cargo .tomlに以下記述を追加
-   ```bash
-   [lib]
-   name = "hello_world"
-   crate-type = ["cdylib", "lib"]
-   ```
-4. 処理コードにコントラクト固有の情報を記述
+3. X
+
+## 5. Webアプリからの実行
+1. サンプルコードのCLone
+2. 環境変数の設定
+   ### IDLの変更
+   * コピー元：[counter/target/idl/counter.json](./counter/target/idl/counter.json)
+   * コピー先：[sample_webapp/src/idl.json](./sample_webapp/src/idl.json)の内容を変更
+
+   ### プログラムIDの変更
+   [anchorClient.ts](./sample_webapp/src/anchorClient.ts)の９行目を変更
    ```rust
-   // 1.Solanaのライブラリ系をインポート
-   use solana_program::{
-      account_info::AccountInfo,
-      entrypoint,
-      entrypoint::ProgramResult,
-      pubkey::Pubkey,
-      msg,
-   };
-
-   // 2. Entrypointの指定
-   entrypoint!(process_instruction);
-   pub fn process_instruction(
-      program_id: &Pubkey,
-      accounts: &[AccountInfo],
-      instruction_data: &[u8]
-   ) -> ProgramResult {
-      // log a message to the blockchain
-      msg!("Hello, world!");
-   
-      // gracefully exit the program
-      Ok(())
-   }
-
-   pub fn add(left: usize, right: usize) -> usize {
-      left + right
-   }
-   #[cfg(test)]
-   mod tests {
-      use super::*;
-
-      #[test]
-      fn it_works() {
-         let result = add(2, 2);
-         assert_eq!(result, 4);
-      }
-   }
+   const programId_counter = new PublicKey( -->
+      "9nQUPGZ32Y3D71tZAoUPJGERQAiZZoDmdmNPXCLyRyBr"
+   );
    ```
-5. プログラムをビルド(Cago.tomlと同ディレクトリで実行)
-   ```bash
-   cargo build-bpf
-   ```
-## 5. コントラクトのデプロイ
-1. デプロイの実行
-   ```bash
-   solana program deploy ./target/deploy/hello_world.so
-   ```
-2. プログラムのコードを控えておく（以下は出力値の例）
-   ```bash
-   Program Id: EFH95fWg49vkFNbAdw9vy75tM7sWZ2hQbTTUmuACGip3
-   ```
+3. X
 
 # 環境値
 項目 | 値
 -- | --
-Program ID | 6hvQdryW4ic8so5h11FZ1QvNFszhoc38guByakbdLvaL
+Program ID | 9nQUPGZ32Y3D71tZAoUPJGERQAiZZoDmdmNPXCLyRyBr
 
 # 参考
 * [【完全保存版】ローカル環境でのsolana CLIを実行（コントラクトのデプロイまで）](https://note.com/standenglish/n/nd90e38db1781)
 * [solana-test-validator: illegal hardware instruction](https://solana.stackexchange.com/questions/3640/solana-test-validator-illegal-hardware-instruction)
 * [Setup, build, and deploy a Solana program locally in Rust](https://solana.com/developers/guides/getstarted/local-rust-hello-world)
+* [Default program won't build on Anchor 0.30, ahash 0.84 no longer builds](https://solana.stackexchange.com/questions/13210/default-program-wont-build-on-anchor-0-30-ahash-0-84-no-longer-builds)
